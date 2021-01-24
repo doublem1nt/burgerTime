@@ -31,7 +31,7 @@ Distributed under the MIT License.
 
 # Contact
 Jonathan Yee : doublem1nt@gmail.com
-Project Link: https://github.com/doublem1nt/burgertimemvc
+Project Link: https://github.com/doublem1nt/burgerTime
 Published Heroku Page : https://burgertimemvc.herokuapp.com/
 
 
