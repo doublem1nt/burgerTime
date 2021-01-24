@@ -14,6 +14,7 @@ Basic application to demonstrate comprehension of mySQL database queries, expres
 (3) mySQL
 (4) Express (HandleBars)
 (5) Heroku Hosting
+(6) Node JS
 
 # Contribution
 Contribution is appreciated.
