@@ -1,10 +1,13 @@
+<!--
+	Element for rendering the Burger objects as line elements. 
+	Buttons to (1) devour it or (2) delete / send it back will render as long as the burger has not been devoured. 
+-->
+
 <li>
 	{{burger_name}}
-
-	{{!-- <button class="change-devouredState" data-id="{{id}}" data-devState="{{devoured}}">Devour it!</button> --}}
 	{{#unless devoured}}
 	<br>
-	<button class="change-devouredState" data-id="{{id}}">Devour it!</button>
-	<button class="delete-burger" data-id="{{id}}">Don't want it, Send it back!</button>
+	<button class="change-devouredState" data-id="{{this.id}}">Devour it!</button>
+	<button class="delete-burger" data-id="{{this.id}}">Send it back!</button>
 	{{/unless}}
 </li>

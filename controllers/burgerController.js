@@ -1,12 +1,13 @@
+// sets up express 
 const express = require("express");
-
 const router = express.Router();
 
-// Import the model (burger.js) to use its database functions.
+// Import the model (burger.js) for method functionality
 const burger = require("../models/burgers.js");
 
-// Create all our routes and set up logic within those routes where required.
-router.get("/", (req, res) => {
+// Router "get" defintion
+// Displays all current information from Database
+router.get("/", function(req, res) {
   burger.all((data) => {
     const listDisplay = {
       burgers: data
@@ -16,7 +17,9 @@ router.get("/", (req, res) => {
   });
 });
 
-router.post("/api/burgers", (req, res) => {
+// Router "POST" defintion
+// Adds all user inputted elements to create a new Burger object for database
+router.post("/api/burgers", function(req, res) {
   burger.create(
     ["burger_name"],[req.body.burger_name], (result) => {
     // Send back the ID of the new quote
@@ -24,7 +27,9 @@ router.post("/api/burgers", (req, res) => {
   });
 });
 
-router.put("/api/burgers/:id", (req, res) => {
+// Router "put" definition
+// Changes a Burger Object's devoured condition from false to true
+router.put("/api/burgers/:id", function(req, res) {
   const condition = "id = " + req.params.id;
 
   console.log("condition", condition);
@@ -41,12 +46,16 @@ router.put("/api/burgers/:id", (req, res) => {
   });
 });
 
-router.delete("/api/burgers/:id", (req, res) => {
+// Router "Delete" Defintion
+// Removes a Burger Object from the database
+router.delete("/api/burgers/:id", function(req, res) {
   const condition = "id = " + req.params.id;
+
+  console.log("condition", condition);
 
   burger.delete(condition, (result) => {
     if (result.affectedRows == 0) {
-      // If no rows were changed, then the ID must not exist, so 404
+      // Validates if delete has been performed.
       return res.status(404).end();
     } else {
       res.status(200).end();

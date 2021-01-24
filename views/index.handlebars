@@ -1,33 +1,62 @@
+<!--
+Partial HTML display elements for all text headers, rows, columns etc that are not part of the burger object.
+-->
+
 <h1>Burger Time</h1>
 
-<h2>Request a new Burger to Eat</h2>
+<p>
+  <img src="assets/img/burgers.PNG" alt="Burgers!">
+</p>
+
 <form class="create-form">
 
   <div class="form-group">
-    <label for="burg">Name it:</label>
-    <input type="text" id="burg" name="burger_name">
+    <label for="burg">Want a Burger?</label>
+    <br>
+    <input type="text" id="burg" name="burger_name" placeholder="Enter your favorite here!">
   </div>
-
-  <button type="submit">Add Item</button>
+  <div>
+    <button type="submit">Add Item</button>
+  </div>
 </form>
+<p>
 
-<h4>Burgers, fresh out of the oven!</h4>
 
-<ul>
-  {{#each burgers}}
-    {{#unless devoured}}
-      {{!-- {{> cats/cat-block sleep=false}} --}}
-      {{!-- {{> burgers/burger-block devoured=false}} --}}
-      {{> burgers/burger-block}}
-    {{/unless}}
-  {{/each}}
+
+<div class="row">
+  <div class="column">
+    <h4>À la carte:</h4>
+  </div>
+  <div class="column">
+    <h4>Burgers Destroyed:</h4>
+  </div>
+</div>
+<div class="row">
+  <div class="column">
+        <ul>
+          <!--Loops through Burgers (that are not devoured) and renders them-->
+          {{#each burgers}}
+            {{#unless devoured}}
+              {{> burgers/burger-block}}
+            {{/unless}}
+          {{/each}}
+    </ul>
+  </div>
+  <div class="column">
+    <ul>
+      <!--Loops through Burgers (that are devoured) and renders them-->
+      {{#each burgers}}
+        {{#if devoured}}
+          {{> burgers/burger-block}}
+        {{/if}}
+      {{/each}}
 </ul>
+  </div>
+</div>
 
-<h4>Burgers Eaten</h4>
-<ul>
-  {{#each burgers}}
-    {{#if devoured}}
-      {{> burgers/burger-block}}
-    {{/if}}
-  {{/each}}
-</ul>
+
+
+
+</div>
+
+

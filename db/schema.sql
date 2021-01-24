@@ -6,7 +6,7 @@ CREATE DATABASE burgers_db;
 
 USE burgers_db;
 
--- Create Table with three properties / columns, id is the primary key.
+-- Create Table with three properties / columns, id is the primary key. devoured remains false on first creation
 CREATE TABLE burgers (
     id INT AUTO_INCREMENT,
     burger_name VARCHAR(30),

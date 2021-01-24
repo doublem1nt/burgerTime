@@ -1,10 +1,8 @@
-// 2. Create a `connection.js` file inside `config` directory.
-//    * Inside the `connection.js` file, setup the code to connect Node to MySQL.
-//    * Export the connection.
+// Import / Require MYSQL package
+const mysql = require("mysql");
 
-var mysql = require("mysql");
-
-var connection = mysql.createConnection({
+// Connection for all password, user, database and port definitions
+const connection = mysql.createConnection({
   host: "localhost",
   port: 3306,
   user: "root",
@@ -12,6 +10,7 @@ var connection = mysql.createConnection({
   database: "burgers_db"
 });
 
+// Connect set up and alert users if connection is made
 connection.connect((err) => {
   if (err) {
     console.error("error connecting: " + err.stack);
@@ -20,4 +19,5 @@ connection.connect((err) => {
   console.log("connected as id " + connection.threadId);
 });
 
+//Export connection definition for ORM to access
 module.exports = connection;

@@ -1,11 +1,8 @@
-// Import MySQL connection.
+// Import connect.js for MYSQL functionality
 const connection = require("../config/connection.js");
 
 // Helper function for SQL syntax.
-// Let's say we want to pass 3 values into the mySQL query.
-// In order to write the query, we need 3 question marks.
-// The above helper function loops through and creates an array of question marks - ["?", "?", "?"] - and turns it into a string.
-// ["?", "?", "?"].toString() => "?,?,?";
+// Builds question marks into SQL string
 const printQuestionMarks = (num) => {
   let arr = [];
 
@@ -21,7 +18,7 @@ const objToSql = (ob) => {
   let arr = [];
 
   // loop through the keys and push the key/value as a string int arr
-  for (var key in ob) {
+  for (let key in ob) {
     let value = ob[key];
     // check to skip hidden properties
     if (Object.hasOwnProperty.call(ob, key)) {
@@ -29,8 +26,7 @@ const objToSql = (ob) => {
       if (typeof value === "string" && value.indexOf(" ") >= 0) {
         value = "'" + value + "'";
       }
-      // e.g. {name: 'Lana Del Grey'} => ["name='Lana Del Grey'"]
-      // e.g. {sleepy: true} => ["sleepy=true"]
+
       arr.push(key + "=" + value);
     }
   }
@@ -39,8 +35,9 @@ const objToSql = (ob) => {
   return arr.toString();
 }
 
-// Object for all our SQL statement functions.
+// ORM Object Defintion
 const orm = {
+  // sets up MYSQL SELECT ALL query
   all: function(tableInput, cb) {
     let queryString = "SELECT * FROM " + tableInput + ";";
     connection.query(queryString, (err, result) => {
@@ -50,6 +47,8 @@ const orm = {
       cb(result);
     });
   },
+
+  // sets up MYSQL create for new Objects / Rows query
   create: function(table, cols, vals, cb) {
     let queryString = "INSERT INTO " + table;
 
@@ -70,7 +69,8 @@ const orm = {
       cb(result);
     });
   },
-  // An example of objColVals would be {name: panther, sleepy: true}
+
+  // sets up MYSQL update to modify a row's data
   update: function(table, objColVals, condition, cb) {
     let queryString = "UPDATE " + table;
 
@@ -88,6 +88,8 @@ const orm = {
       cb(result);
     });
   },
+
+  // sets up MYSQL Delete to remove row from db
   delete: function(table, condition, cb) {
     let queryString = "DELETE FROM " + table;
     queryString += " WHERE ";
@@ -103,5 +105,5 @@ const orm = {
   }
 };
 
-// Export the orm object for the model (cat.js).
+// Export the orm object for the model
 module.exports = orm;

@@ -1,53 +1,55 @@
 // Make sure we wait to attach our handlers until the DOM is fully loaded.
 $(()=> {
   $(".change-devouredState").on("click", function(event) {
-    var id = $(this).data("id");
+    // Data Element inside DEVOUR IT button captures Burger object's ID
+    const id = $(this).data("id");
 
-    var newDevouredState = {
+    const newDevouredState = {
       devoured: true
     };
 
-    // Send the PUT request.
+    // AJAX PUT request script, utilized for DEVOUR IT functionality
     $.ajax("/api/burgers/" + id, {
       type: "PUT",
       data: newDevouredState
     }).then(()=> {
-        console.log("Selected Burger has been eaten? " + newDevouredState.devoured);
-        // Reload the page to get the updated list
+        // Reloads the page to show updated PUT request in full effect
         location.reload();
       }
     );
   });
 
-  $(".create-form").on("submit", (event) => {
-    // Make sure to preventDefault on a submit event.
+  $(".create-form").on("submit", function(event) {
+    // Set to preventDefault on a submit event.
     event.preventDefault();
 
-    var newBurger = {
+    // Pulls from text area and applies it to new Burger Object, setting up "burger_name" property
+    const newBurger = {
       burger_name: $("#burg").val().trim()
     };
 
-    // Send the POST request.
+    // AJAX POST request script, utilized for creating a new Burger Functionality
     $.ajax("/api/burgers", {
       type: "POST",
       data: newBurger
     }).then(()=> {
-        console.log("created new burger, called" + newBurger.burger_name);
-        // Reload the page to get the updated list
+      // Reloads the page to show updated POST request in full effect
         location.reload();
       }
     );
   });
 
-  $(".delete-burger").on("click", (event) => {
-    var id = $(this).data("id");
+  $(".delete-burger").on("click", function(event) {
+    
+    // Data Element inside SEND IT BACK button captures Burger object's ID
+    const id = $(this).data("id");
 
-    // Send the DELETE request.
+    // AJAX DELETE request script, utilized for SEND IT BACK functionality
     $.ajax("/api/burgers/" + id, {
       type: "DELETE"
     }).then(() => {
         console.log("Sent burger back to the kitchen: ", id);
-        // Reload the page to get the updated list
+        // Reloads the page to show updated DELETE request in full effect
         location.reload();
       }
     );
