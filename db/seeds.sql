@@ -1,6 +1,6 @@
-INSERT INTO burgers (burger_name, devoured) VALUES ("Western Bacon Cheeseburger", TRUE);
-INSERT INTO burgers (burger_name, devoured) VALUES ("Vegetarian Tofu Burger", FALSE);
-INSERT INTO burgers (burger_name, devoured) VALUES ("Turkey Avocado Swiss Burger", TRUE);
-INSERT INTO burgers (burger_name, devoured) VALUES ("Classic Double Cheeseburger", TRUE);
-INSERT INTO burgers (burger_name, devoured) VALUES ("Vegan Impossible Burger", FALSE);
-INSERT INTO burgers (burger_name, devoured) VALUES ("Portobello Mushroom Burger", TRUE);
+INSERT INTO burgers (burger_name) VALUES ("Western Bacon Cheeseburger");
+INSERT INTO burgers (burger_name) VALUES ("Vegetarian Tofu Burger");
+INSERT INTO burgers (burger_name) VALUES ("Turkey Avocado Swiss Burger");
+INSERT INTO burgers (burger_name) VALUES ("Classic Double Cheeseburger");
+INSERT INTO burgers (burger_name) VALUES ("Vegan Impossible Burger");
+INSERT INTO burgers (burger_name) VALUES ("Portobello Mushroom Burger");
