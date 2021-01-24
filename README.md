@@ -1,6 +1,6 @@
 # Burger Time "Simple Burger Eating MVC Application"
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://burgertimemvc.herokuapp.com/)
-![Burger Time](.\public\assets\img\demo.gif?raw=true "Burger Time")
+![demo](./assets/img/demo.gif?raw=true "Burger Time")
 
 # About This Project
 
